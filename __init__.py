@@ -4,7 +4,7 @@ bl_info = {
     "description" : "Provides useful tools for creating and editing Assetto Corsa custom cars",
     "blender": (2, 80, 0),
     "category": "Object",
-    "version": (0, 0, 5, 0)
+    "version": (0, 0, 5, 1)
 }
 
 import bpy
