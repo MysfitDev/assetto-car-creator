@@ -256,7 +256,7 @@ class OBJECT_OT_AssettoMeshAdjustScale(Operator):
         scale_object(ahc_tool.root_node, ahc_tool.scale_adjust)
                 
         ahc_tool.root_node.select_set(True)
-        ahc_tool.root_node.scale *= 0.01
+        ahc_tool.root_node.scale *= ahc_tool.root_final_scale
         ahc_tool.root_node.select_set(False)
         
         return {'FINISHED'}
