@@ -245,7 +245,7 @@ class OBJECT_OT_AssettoMeshAdjustScale(Operator):
                 ob.select_set(False)
                 
             obj.select_set(True)
-            obj.scale *= (scale_adjustment * 100)
+            obj.scale *= (scale_adjustment / ahc_tool.root_final_scale)
             select_children(obj)
                 
             bpy.ops.object.transform_apply(location=False, rotation=False, scale=True)
@@ -309,7 +309,8 @@ class OBJECT_OT_AssettoHierarchy(Operator):
         carRootCollection = bpy.data.collections.new(ahc_tool.collection_name)
         bpy.context.scene.collection.children.link(carRootCollection)
 
-        self.make_empty(context, root_empty_name, root_location, ahc_tool.collection_name)
+        root_empty = self.make_empty(context, root_empty_name, root_location, ahc_tool.collection_name)
+        
         bpy.data.objects[root_empty_name].rotation_euler[0] = math.radians(90)
         
         # Make cockpit
