@@ -1,5 +1,5 @@
 bl_info = {
-    "name": "assetto-car-creator",
+    "name": "Assetto Car Creator",
     "author": "Jesse Myers",
     "description" : "Provides useful tools for creating and editing Assetto Corsa custom cars",
     "blender": (2, 80, 0),
