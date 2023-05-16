@@ -683,9 +683,7 @@ def updater_run_install_popup_handler(scene):
         if ver_tuple < updater.current_version:
             # User probably manually installed to get the up to date addon
             # in here. Clear out the update flag using this function.
-            updater.print_verbose(
-                "{} updater: appears user updated, clearing flag".format(
-                    updater.addon_ui_name))
+            updater.print_verbose("Assetto Car Creator updater: appears user updated, clearing flag")
             updater.json_reset_restore()
             return
     atr = AddonUpdaterInstallPopup.bl_idname.split(".")
@@ -744,8 +742,7 @@ def post_update_callback(module_name, res=None):
     if res is None:
         # This is the same code as in conditional at the end of the register
         # function, ie if "auto_reload_post_update" == True, skip code.
-        updater.print_verbose(
-            "{} updater: Running post update callback".format(updater.addon_ui_name))
+        updater.print_verbose("Assetto Car Creator updater: Running post update callback")
 
         atr = AddonUpdaterUpdatedSuccessful.bl_idname.split(".")
         getattr(getattr(bpy.ops, atr[0]), atr[1])('INVOKE_DEFAULT')
