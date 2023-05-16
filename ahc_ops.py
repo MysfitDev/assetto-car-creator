@@ -1,3 +1,5 @@
+
+import bpy
 import math
 import textwrap
 from . import addon_updater_ops
@@ -66,6 +68,10 @@ class OBJECT_OT_AssettoMaterialCreation(Operator):
                    
         self.setup_material_list(self.EXT_MATERIALS)
         self.setup_material_list(self.INT_MATERIALS)
+        
+        if(bpy.data.materials[mat_name] == None):
+            gl_mat = bpy.data.materials.new(name="GL")
+            gl_mat.use_nodes = True
         
         return {'FINISHED'}
 
