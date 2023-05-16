@@ -586,7 +586,7 @@ def register():
         addon_updater_ops.make_annotations(cls)  # Avoid blender 2.8 warnings.
         register_class(cls)
     
-    bpy.types.Scene.ahc_tool = PointerProperty(type=AssettoHierarchyProperties)
+    bpy.types.Scene.ahc_tool = PointerProperty(type=AHC_Addon_Properties)
 
 def unregister():
     # Addon updater unregister.
