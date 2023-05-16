@@ -72,7 +72,7 @@ except Exception as e:
 # not match and have errors. Must be all lowercase and no spaces! Should also
 # be unique among any other addons that could exist (using this updater code),
 # to avoid clashes in operator registration.
-updater.addon = "assetto_car_creator"
+updater.addon = "assetto_car_creator_updater"
 
 
 # -----------------------------------------------------------------------------
@@ -1506,25 +1506,12 @@ def register(bl_info):
     # blender crashes).
     updater.auto_reload_post_update = False
 
-    # The register line items for all operators/panels.
-    # If using bpy.utils.register_module(__name__) to register elsewhere
-    # in the addon, delete these lines (also from unregister).
-    for cls in classes:
-        # Apply annotations to remove Blender 2.8+ warnings, no effect on 2.7
-        make_annotations(cls)
-        # Comment out this line if using bpy.utils.register_module(__name__)
-        bpy.utils.register_class(cls)
-
     # Special situation: we just updated the addon, show a popup to tell the
     # user it worked. Could enclosed in try/catch in case other issues arise.
     show_reload_popup()
 
 
 def unregister():
-    for cls in reversed(classes):
-        # Comment out this line if using bpy.utils.unregister_module(__name__).
-        bpy.utils.unregister_class(cls)
-
     # Clear global vars since they may persist if not restarting blender.
     updater.clear_state()  # Clear internal vars, avoids reloading oddities.
 
