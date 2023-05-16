@@ -6,6 +6,9 @@ from . import ahc_ops
 from mathutils import (Matrix,
                         Vector,
                         )
+                       
+from bpy.types import (Operator,
+                        )
 
 
 

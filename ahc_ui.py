@@ -5,9 +5,7 @@ from . import (addon_updater_ops,
                 ahc_ops)
                        
 from bpy.types import (Panel,
-                        Menu,
                         Operator,
-                        PropertyGroup,
                         )
                        
 from mathutils import (Matrix,
