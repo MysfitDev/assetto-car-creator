@@ -72,7 +72,7 @@ except Exception as e:
 # not match and have errors. Must be all lowercase and no spaces! Should also
 # be unique among any other addons that could exist (using this updater code),
 # to avoid clashes in operator registration.
-updater.addon = "Assetto Car Creator"
+updater.addon = "assettocarcreator"
 
 
 # -----------------------------------------------------------------------------
@@ -129,7 +129,7 @@ def get_user_preferences(context=None):
 # Simple popup to prompt use to check for update & offer install if available.
 class AddonUpdaterInstallPopup(bpy.types.Operator):
     """Check and install update if available"""
-    bl_label = "Update {x} addon".format(x=updater.addon)
+    bl_label = "Update Assetto Car Creator"
     bl_idname = updater.addon + ".updater_install_popup"
     bl_description = "Popup to check and display current updates available"
     bl_options = {'REGISTER', 'INTERNAL'}
@@ -230,10 +230,9 @@ class AddonUpdaterInstallPopup(bpy.types.Operator):
 
 # User preference check-now operator
 class AddonUpdaterCheckNow(bpy.types.Operator):
-    bl_label = "Check now for " + updater.addon + " update"
+    bl_label = "Check now for Assetto Car Creator update"
     bl_idname = updater.addon + ".updater_check_now"
-    bl_description = "Check now for an update to the {} addon".format(
-        updater.addon)
+    bl_description = "Check now for an update to Assetto Car Creator"
     bl_options = {'REGISTER', 'INTERNAL'}
 
     def execute(self, context):
@@ -269,10 +268,9 @@ class AddonUpdaterCheckNow(bpy.types.Operator):
 
 
 class AddonUpdaterUpdateNow(bpy.types.Operator):
-    bl_label = "Update " + updater.addon + " addon now"
+    bl_label = "Update Assetto Car Creator now"
     bl_idname = updater.addon + ".updater_update_now"
-    bl_description = "Update to the latest version of the {x} addon".format(
-        x=updater.addon)
+    bl_description = "Update to the latest version of Assetto Car Creator"
     bl_options = {'REGISTER', 'INTERNAL'}
 
     # If true, run clean install - ie remove all files before adding new
@@ -331,10 +329,9 @@ class AddonUpdaterUpdateNow(bpy.types.Operator):
 
 
 class AddonUpdaterUpdateTarget(bpy.types.Operator):
-    bl_label = updater.addon + " version target"
+    bl_label = "Assetto Car Creator version target"
     bl_idname = updater.addon + ".updater_update_target"
-    bl_description = "Install a targeted version of the {x} addon".format(
-        x=updater.addon)
+    bl_description = "Install a targeted version of Assetto Car Creator"
     bl_options = {'REGISTER', 'INTERNAL'}
 
     def target_version(self, context):
@@ -688,7 +685,7 @@ def updater_run_install_popup_handler(scene):
             # in here. Clear out the update flag using this function.
             updater.print_verbose(
                 "{} updater: appears user updated, clearing flag".format(
-                    updater.addon))
+                    updater.addon_ui_name))
             updater.json_reset_restore()
             return
     atr = AddonUpdaterInstallPopup.bl_idname.split(".")
@@ -748,7 +745,7 @@ def post_update_callback(module_name, res=None):
         # This is the same code as in conditional at the end of the register
         # function, ie if "auto_reload_post_update" == True, skip code.
         updater.print_verbose(
-            "{} updater: Running post update callback".format(updater.addon))
+            "{} updater: Running post update callback".format(updater.addon_ui_name))
 
         atr = AddonUpdaterUpdatedSuccessful.bl_idname.split(".")
         getattr(getattr(bpy.ops, atr[0]), atr[1])('INVOKE_DEFAULT')
@@ -1518,6 +1515,10 @@ def register(bl_info):
 
 
 def unregister():
+    for cls in reversed(classes):
+        # Comment out this line if using bpy.utils.unregister_module(__name__).
+        bpy.utils.unregister_class(cls)
+
     # Clear global vars since they may persist if not restarting blender.
     updater.clear_state()  # Clear internal vars, avoids reloading oddities.
 

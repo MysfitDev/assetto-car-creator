@@ -386,7 +386,7 @@ class OBJECT_OT_AssettoMeshEmptyPositioner(Operator):
 
 class OBJECT_PT_AssettoHierarchyPanel(Panel):
     bl_label = 'Assetto Car Hierarchy'
-    bl_idname = 'PT_AssettoHierarchyPanel'
+    bl_idname = 'AHC_PT_AssettoHierarchyPanel'
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
     bl_category = 'Assetto'
@@ -427,7 +427,7 @@ class OBJECT_PT_AssettoHierarchyPanel(Panel):
 
 class OBJECT_PT_AssettoMaterialPanel(Panel):
     bl_label = 'Assetto Materials'
-    bl_idname = 'PT_AssettoMaterialPanel'
+    bl_idname = 'AHC_PT_AssettoMaterialPanel'
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
     bl_category = 'Assetto'
@@ -445,7 +445,7 @@ class OBJECT_PT_AssettoMaterialPanel(Panel):
         
 class OBJECT_PT_AssettoMeshCleanupPanel(Panel):
     bl_label = 'Assetto Mesh Cleanup'
-    bl_idname = 'PT_AssettoMeshCleanupPanel'
+    bl_idname = 'AHC_PT_AssettoMeshCleanupPanel'
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
     bl_category = 'Assetto'
