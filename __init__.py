@@ -392,9 +392,9 @@ class OBJECT_PT_AssettoHierarchyPanel(Panel):
     bl_category = 'Assetto'
     
     def draw(self, context):
-        addon_updater_ops.check_for_update_background(context)
+        addon_updater_ops.check_for_update_background()
         
-        props = self.layout.operator(AssettoHierarchyProperties.bl_idname)
+        props = self.layout.operator(AHC_Addon_Properties.bl_idname)
         
         layout = self.layout
         scene = context.scene
@@ -433,7 +433,7 @@ class OBJECT_PT_AssettoMaterialPanel(Panel):
     bl_category = 'Assetto'
     
     def draw(self, context):
-        props = self.layout.operator(AssettoHierarchyProperties.bl_idname)
+        props = self.layout.operator(AHC_Addon_Properties.bl_idname)
         
         layout = self.layout
         scene = context.scene
@@ -451,7 +451,7 @@ class OBJECT_PT_AssettoMeshCleanupPanel(Panel):
     bl_category = 'Assetto'
     
     def draw(self, context):
-        props = self.layout.operator(AssettoHierarchyProperties.bl_idname)
+        props = self.layout.operator(AHC_Addon_Properties.bl_idname)
         wrapp = textwrap.TextWrapper(width=50) #50 = maximum length 
         
         layout = self.layout
@@ -600,4 +600,3 @@ def unregister():
     
 if __name__ == '__main__':
     register()
-    
