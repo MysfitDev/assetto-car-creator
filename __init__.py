@@ -4,7 +4,7 @@ bl_info = {
     "description" : "Provides useful tools for creating and editing Assetto Corsa custom cars",
     "blender": (2, 80, 0),
     "category": "Object",
-    "version": (0.0.2)
+    "version": (0, 0, 3)
 }
 
 import bpy
@@ -586,7 +586,7 @@ def register():
         addon_updater_ops.make_annotations(cls)  # Avoid blender 2.8 warnings.
         register_class(cls)
     
-    bpy.types.Scene.ahc_tool = PointerProperty(type=AssettoHierarchyProperties)
+    bpy.types.Scene.ahc_tool = PointerProperty(type=AHC_Addon_Properties)
 
 def unregister():
     # Addon updater unregister.
